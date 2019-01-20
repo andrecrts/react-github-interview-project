@@ -15,7 +15,7 @@ export const getUserRepos = username => {
     })
 };
 
-export const search = query => {
+export const searchRepo = query => {
     const url = `${BASE_URL}/search/repositories?q=${query}`;
 
     return new Promise ((resolve, reject) => {

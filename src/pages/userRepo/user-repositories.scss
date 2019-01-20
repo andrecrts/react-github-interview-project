@@ -1,0 +1,58 @@
+.UserRepositories {
+    background: #24292e;
+    display: flex;
+    min-height: 100vh;
+    padding: 4px;
+
+    .cards-wrapper {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        flex-grow: 1;
+        flex-wrap: wrap;
+
+        .card-repositorie {
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            margin: 8px;
+            overflow: hidden;
+            position: relative;
+            width: 300px;
+
+            .card-header {
+                align-items: center;
+                background: #f2f2f2;
+                display: flex;
+                min-height: 76px;
+                padding: 16px;
+                padding-right: 50px;
+                position: relative;
+
+                .name {
+                    margin: 0;
+                }
+
+                .add-fav {
+                    align-items: center;
+                    background:none;
+                    border: 0;
+                    bottom: 0;
+                    cursor: pointer;
+                    display: flex;
+                    margin: 0;
+                    position: absolute;
+                    right: 8px;
+                    top: 0;
+                }
+            }
+
+            .card-body {
+                padding: 16px;
+            }
+        }
+    }
+}

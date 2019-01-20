@@ -1,5 +1,6 @@
 .Search {
     margin: 20px 0;
+    position: relative;
     width: 500px;
 
     .Search-input {
@@ -22,10 +23,29 @@
             color: #ccc
         }
     }
+
+    .select-mask {
+        background: #24292e;
+        border-radius: 8px;
+        bottom: 8px;
+        position: absolute;
+        right: 8px;
+        top: 8px;
+
+        select {
+            background: transparent;
+            border: 0;
+            color: white;
+            height: 100%;
+            outline: none;
+            padding-left: 8px;
+        }
+    }
 }
 
 .loader {
     align-items: center;
     display: flex;
     justify-content: center;
+    width: 100%;
 }

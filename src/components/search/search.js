@@ -8,12 +8,19 @@ const Search = props => (
                 ref={props.setRef}
                 type="text"
                 className="Search-input"
-                placeholder="Search github users"
+                placeholder={props.placeholder}
                 name="search"
                 onChange={props.handleChange}
                 value={props.value}
                 autoComplete="off"
             />
+
+            <div className="select-mask">
+                <select value={props.selectValue} onChange={props.handleChangeSelect}>
+                    <option value="users">Users</option>
+                    <option value="repositories">Repositories</option>
+                </select>
+            </div>
         </form>
     </div>
 );
