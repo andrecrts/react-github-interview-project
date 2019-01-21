@@ -1,0 +1,35 @@
+.Header {
+    align-items: center;
+    background: #24292e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    display: flex;
+    height: 80px;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 2;
+    
+    nav {
+        padding-left: 8px;
+
+        li {
+            display: inline-block;
+            list-style: none;
+            margin-right: 16px;
+            vertical-align: middle;
+
+            .link{
+                color: #fff;
+                text-decoration: none;
+
+                &.active {
+                    text-decoration: underline;
+                }
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

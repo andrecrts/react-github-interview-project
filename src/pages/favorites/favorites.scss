@@ -1,0 +1,14 @@
+.Favorites {
+    display: flex;
+    min-height: 100vh;
+    padding: 4px;
+
+    .cards-wrapper {
+        align-content: flex-start;
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        flex-grow: 1;
+        flex-wrap: wrap;
+    }
+}

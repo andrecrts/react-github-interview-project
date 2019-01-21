@@ -1,0 +1,74 @@
+.card-repositorie {
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12);
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 8px;
+    max-height: 300px;
+    min-width: 300px;
+    min-height: 300px;
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+
+    .card-header {
+        align-items: center;
+        background: #f2f2f2;
+        border-bottom: 1px solid #d8d8d8;
+        display: flex;
+        min-height: 76px;
+        padding: 16px;
+        padding-right: 50px;
+        position: relative;
+
+        .name {
+            margin: 0;
+        }
+
+        .add-fav {
+            align-items: center;
+            background:none;
+            border: 0;
+            bottom: 0;
+            cursor: pointer;
+            display: flex;
+            margin: 0;
+            outline: none;
+            position: absolute;
+            right: 8px;
+            top: 0;
+        }
+    }
+
+    .card-body {
+        padding: 16px;
+
+        .owner {
+            margin: 0 0 8px 0;
+        }
+
+        .description {
+            display: block;
+            height: auto;
+            max-height: 3*1.2em;
+            margin: 0 auto;
+            line-height: 1.2em;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .link {
+            word-break: break-word;
+            color: #333;
+
+            &:hover {
+                color: #000
+            }
+        }
+    }
+}
