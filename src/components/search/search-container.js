@@ -16,13 +16,11 @@ class SearchContainer extends Component {
     handleSubmit = e => {
         e.preventDefault();
         this.setState({ loader: true });
-        console.log(this.props.data, '---')
-        
+
         if (this.state.valueSelect === "users") {
             getUserRepos(this.state.value)
                 .then(response => {
                     this.setState({ loader: false });
-                    console.log(response);
 
                     if (response.length > 0) {
                         this.props.data.history.push(
@@ -46,7 +44,6 @@ class SearchContainer extends Component {
             searchRepo(this.state.value)
                 .then(response => {
                     if (response) {
-                        console.log(response)
                         this.setState({ loader: false });
                         this.props.data.history.push(
                             "/search/" + this.state.value

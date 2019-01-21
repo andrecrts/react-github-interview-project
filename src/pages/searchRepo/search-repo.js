@@ -2,23 +2,31 @@ import React, { Component } from "react";
 import "./search-repo.scss";
 import { searchRepo } from "../../providers/github/git-api";
 import loader from "../../assets/img/loader.svg";
-import Star from "../../components/icons/star";
+import Header from "../../components/header/header";
+import Card from "../../components/cards/card";
 
 class SearchRepo extends Component {
     state = {
         repos: null,
         loader: true,
-        stuff: null
+        stuff: null,
+        favorites: []
     };
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            stuff: nextProps.test
-        });
-    }
 
     componentDidMount() {
         var repos = this.props.match.params.repo;
+
+        if (localStorage.getItem("favorites")) {
+            var favsArray = JSON.parse(localStorage.getItem("favorites"));
+            
+            for(let i = 0; i < favsArray.length; i++) {
+                this.state.favorites.push(favsArray[i])
+            }
+
+            console.log('recibo local storage', favsArray);
+        }
+
+        console.log('state',this.state.favorites);
 
         searchRepo(repos)
             .then(response => {
@@ -39,49 +47,53 @@ class SearchRepo extends Component {
 
     handleClick = (e, repo) => {
         e.preventDefault();
-        console.log(repo);
+        var favorites = this.state.favorites
+       
+        console.log('Local storage', this.state.favorites)
+        console.log('after push', this.state.favorites);
+
+
+        for(let i = 0; i < favorites.length; i++) {
+            favorites[i]['selected'] = true
+
+            if (favorites.length > 1) {
+                if (favorites[i].id === repo.id) {
+                    favorites.pop(repo)
+                } 
+            }
+
+        }
+
+        favorites.push(repo)
+        localStorage.setItem('favorites', JSON.stringify(this.state.favorites));
+        this.setState({starColor: '#efe62e'})
     };
 
     render() {
         const ALL_REPOS = this.state.repos;
 
         return (
-            <div className="SearchRepo">
-                {this.state.loader ?
-                    <div className="loader">
-                        <img src={loader} alt="loader" />
-                    </div>
-                    :
-                    <div className="cards-wrapper">
-                        {
-                            ALL_REPOS.map((repo, index) => {
+            <div>
+                <Header />
+                <div className="SearchRepo">
+                    {this.state.loader ? (
+                        <div className="loader">
+                            <img src={loader} alt="loader" />
+                        </div>
+                    ) : (
+                        <div className="cards-wrapper">
+                            {ALL_REPOS.map((repo, index) => {
                                 return (
-                                    <div className="card-repositorie" key={index}>
-                                        <div className="card-header">
-                                            <h3 className="name" onClick={ e => this.handleClick(e, repo)}>
-                                                {repo.name}
-                                            </h3>
-                                            <button className="add-fav">
-                                                <Star size="24px" color="#c5c5c5" />
-                                            </button>
-                                        </div>
-                                        <div className="card-body">
-                                            <h5 className="owner">User: {repo.owner.login}</h5>
-                                            <p>
-                                                {repo.description ? repo.description : 'No description available'}
-                                            </p>
-
-                                            <div>
-                                                <p>Open issues: {repo.open_issues}</p>
-                                                <a className="link" href={repo.url}>{repo.url}</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Card
+                                        key={index}
+                                        data={repo}
+                                        handleClick={this.handleClick}
+                                    />
                                 );
-                            })
-                        }
-                    </div>
-                }
+                            })}
+                        </div>
+                    )}
+                </div>
             </div>
         );
     }
