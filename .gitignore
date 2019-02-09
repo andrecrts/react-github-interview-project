@@ -388,3 +388,5 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/node,webstorm,reactnative
+yalo-test/package-lock.json
+../.idea/
