@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ComNav from './components/ComNav';
+import ComFooter from './components/ComFooter';
+import ComHeader from './components/ComHeader';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+      
+      <ComNav/>
         <header className="App-header">
+        <ComHeader/>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            App Git Search
           </p>
           <a
             className="App-link"
@@ -20,6 +26,7 @@ class App extends Component {
             Learn React
           </a>
         </header>
+        <ComFooter/>
       </div>
     );
   }

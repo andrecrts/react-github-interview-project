@@ -1,0 +1,20 @@
+.yalo_logo {
+    width: 66px;
+    height: 25px;
+    margin-top: 22px;
+    background-position: 50% 50%;
+    background-size: 66px 25px;
+}
+
+.ComHeader {
+    color: white;
+}
+
+.ComFooter{
+    text-align: center;
+  }
+  
+  .logoGit{
+    padding: 1%;
+    float: right;
+  }
