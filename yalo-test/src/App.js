@@ -3,24 +3,23 @@ import logo from './img/yalochat.png';
 import styled from 'styled-components';
 import './App.css';
 import {
-    Button,
-    Collapse, Container, Form, Input, Nav, Navbar, NavbarBrand,
-    NavbarToggler, NavItem, NavLink
+    Container, Nav, Navbar, NavbarBrand,
+    NavItem, NavLink
 } from '@bootstrap-styled/v4/dist/@bootstrap-styled/v4';
 
 const AppLogo = styled.img`
    height: 80px;
 `;
 
-class App extends Component {
+const initialState = {
+    isOpen: false,
+};
 
-    initialState = {
-        isOpen: false,
-    };
+class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = this.initialState;
+        this.state = initialState;
     }
 
     showAler() {
@@ -43,10 +42,6 @@ class App extends Component {
                             <NavLink>Bookmarks</NavLink>
                         </NavItem>
                     </Nav>
-                    <Form inline className="my-2 my-lg-0">
-                        <Input className="form-control mr-sm-2" type="text" placeholder="Search"/>
-                        <Button href="javascript:;" color="primary">Search</Button>
-                    </Form>
                 </Container>
             </Navbar>
         );
