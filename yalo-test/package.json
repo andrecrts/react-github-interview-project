@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bootstrap-styled/provider": "^1.4.2",
     "@bootstrap-styled/v4": "^3.0.4",
     "axios": "^0.18.0",
     "bootstrap-styled": "^2.4.11",
