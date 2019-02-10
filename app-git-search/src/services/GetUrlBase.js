@@ -1,0 +1,1 @@
+export const UrlBase = "https://api.github.com";
