@@ -8,6 +8,7 @@ import {
 import { LinkContainer } from 'react-router-bootstrap';
 import Users from './github-api/UsersSearch';
 import Repos from './github-api/ReposSearch';
+import Bookmarks from './Bookmarks';
 
 
 class GitHubUsers extends Component {
@@ -31,10 +32,18 @@ class GitHubUsers extends Component {
                 </NavLink>
               </LinkContainer>
             </NavItem>
+            <NavItem>
+              <LinkContainer to={`${match.url}/bookmarks`}>
+                <NavLink>
+                  Bookmarks
+                </NavLink>
+              </LinkContainer>
+            </NavItem>
           </Nav>
           <div className="w-100 d-inline-block">
             <Route exact path={`${match.url}`} render={() => <h3>Selecciona una opción</h3>} />
             <Route exact path={`${match.url}/usuarios`} component={Users} />
+            <Route exact path={`${match.url}/bookmarks`} component={Bookmarks} />
             <Route path={`${match.url}/repos`} component={Repos} />
           </div>
         </Container>

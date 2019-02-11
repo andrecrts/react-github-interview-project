@@ -3,7 +3,7 @@ import {
   Button, Container, Form, Input,
 } from '@bootstrap-styled/v4/dist/@bootstrap-styled/v4';
 import { getUserRepos } from '../../services/git-api';
-import UserList from './UserList';
+import ReposList from './ReposList';
 
 class UsersSearch extends Component {
   constructor(props) {
@@ -42,10 +42,11 @@ class UsersSearch extends Component {
     if (error) {
       const { message } = error;
       element = <h3>{message}</h3>;
+    } else if (searchResults.length > 0) {
+      element = <ReposList repos={searchResults} />;
     } else {
-      element = <UserList users={searchResults} />;
+      element = <h3>No existen repos</h3>;
     }
-
 
     return (
       <Container>
