@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import logo from './img/yalochat.png';
 import styled from 'styled-components';
 import './App.css';
 import {
   Container, Nav, Navbar, NavbarBrand,
-  NavItem, NavLink,
+  NavItem,
 } from '@bootstrap-styled/v4/dist/@bootstrap-styled/v4';
 import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
+import logo from './img/yalochat.png';
 import GitHubUsers from './pages/GitHubUsers';
 import Bookmarks from './pages/Bookmarks';
 
@@ -19,7 +19,6 @@ const initialState = {
 };
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = initialState;
@@ -36,7 +35,7 @@ class App extends Component {
               </div>
               <Nav navbar className="mr-auto">
                 <NavItem>
-                  <Link to="/">GitHub Users</Link>
+                  <Link to="/github">GitHub Users</Link>
                 </NavItem>
                 <NavItem>
                   <Link to="/bookmarks">Bookmarks</Link>
@@ -44,8 +43,9 @@ class App extends Component {
               </Nav>
             </Container>
           </Navbar>
-          <div className="bg-warning d-inline-block w-100">
-            <Route exact path="/" component={GitHubUsers} />
+          <div className="d-inline-block w-100">
+            <Route exact path="/" render={() => <h3>Selecciona una opción</h3>} />
+            <Route path="/github" component={GitHubUsers} />
             <Route path="/bookmarks" component={Bookmarks} />
           </div>
         </Container>

@@ -4,7 +4,6 @@ import {
 } from '@bootstrap-styled/v4/dist/@bootstrap-styled/v4';
 
 class Bookmarks extends Component {
-
   render() {
     return (
       <Container>
@@ -17,7 +16,6 @@ class Bookmarks extends Component {
       </Container>
     );
   }
-
 }
 
 export default Bookmarks;

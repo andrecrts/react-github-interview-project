@@ -1,33 +1,41 @@
 import React, { Component } from 'react';
 import {
-  Container, Nav, NavItem,
+  Container, Nav, NavItem, NavLink,
 } from '@bootstrap-styled/v4/dist/@bootstrap-styled/v4';
 import {
-  Link, Route, BrowserRouter as Router,
+  Route, BrowserRouter as Router,
 } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import Users from './github-api/UsersSearch';
 import Repos from './github-api/ReposSearch';
 
+
 class GitHubUsers extends Component {
   render() {
+    const { match } = this.props;
     return (
       <Router>
         <Container className="w-100">
-          <div className="w-25 d-inline-block">
-            <Nav navbar className="mr-auto">
-              <NavItem>
-                <Link to="/">Usuarios</Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/repos">Repos</Link>
-              </NavItem>
-            </Nav>
-          </div>
-          <div className="w-75 bg-info d-inline-block">
-            <div className="d-inline-block w-100">
-              <Route exact path="/" component={Users} />
-              <Route path="/repos" component={Repos} />
-            </div>
+          <Nav tabs>
+            <NavItem>
+              <LinkContainer to={`${match.url}/usuarios`}>
+                <NavLink>
+                  Usuarios
+                </NavLink>
+              </LinkContainer>
+            </NavItem>
+            <NavItem>
+              <LinkContainer to={`${match.url}/repos`}>
+                <NavLink>
+                  Repos
+                </NavLink>
+              </LinkContainer>
+            </NavItem>
+          </Nav>
+          <div className="w-100 d-inline-block">
+            <Route exact path={`${match.url}`} render={() => <h3>Selecciona una opción</h3>} />
+            <Route exact path={`${match.url}/usuarios`} component={Users} />
+            <Route path={`${match.url}/repos`} component={Repos} />
           </div>
         </Container>
       </Router>

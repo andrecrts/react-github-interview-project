@@ -3,13 +3,12 @@ import {
   Card, CardBlock, CardSubtitle, CardText, CardTitle, Container,
 } from '@bootstrap-styled/v4/dist/@bootstrap-styled/v4';
 
-class ReposList extends Component {
+class UserList extends Component {
   render() {
-    const { repos } = this.props;
+    const { users } = this.props;
     let listItems = [];
-    if (repos.items) {
-      const { items } = repos;
-      listItems = items.map(repo => (
+    if (users) {
+      listItems = users.map(repo => (
         <Card width="100%">
           <CardBlock>
             <CardTitle>{repo.full_name}</CardTitle>
@@ -31,4 +30,4 @@ class ReposList extends Component {
   }
 }
 
-export default ReposList;
+export default UserList;
