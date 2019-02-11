@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import {
+  Button,
   Card, CardBlock, CardSubtitle, CardText, CardTitle, Container,
 } from '@bootstrap-styled/v4/dist/@bootstrap-styled/v4';
 
 class ReposList extends Component {
+  addToBookMark(repo) {
+    console.log(repo);
+  }
+
   render() {
     const { repos } = this.props;
     let listItems = [];
@@ -18,6 +23,7 @@ class ReposList extends Component {
               {repo.language}
             </CardSubtitle>
             <CardText>{repo.description}</CardText>
+            <Button color="primary" onClick={this.addToBookMark(repo)}>AddFavorite</Button>
           </CardBlock>
         </Card>
       ));
