@@ -43,18 +43,12 @@ class ComSearch2 extends Component {
                 })
             });
             
-            // for (let _i = 0; _i < response.data.length; _i++) {
-            //     const element = response[_i];
-            //     console.log(element);
-                
-            // }
 
             _form.setState({
                 state
             });
         }).catch(function(error){
             console.error(error);
-            //Perform action based on error
         });
     }
 
@@ -64,7 +58,6 @@ class ComSearch2 extends Component {
         this.setState({
             state
         });
-        // console.log(this.state);
     }
 
     render() {
@@ -101,11 +94,4 @@ class ComSearch2 extends Component {
 
 }
 
-// function mapStateToProps(state) {
-//     return {
-//       users: state.user.list
-//     }
-// }
-
 export default ComSearch2;
-// export default connect(mapStateToProps, { showUsers })(ComSearch1)

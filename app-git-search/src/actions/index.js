@@ -9,7 +9,7 @@ export const SHOW_USERS = 'SHOW_USERS';
     
 export function showUsers() {
     return (dispatch, getState) => {
-        Axios.get('http://jsonplaceholder.typicode.com/users')
+        Axios.get('https://api.github.com')
             .then((response) => {
                 console.log(response)
                 dispatch({type: SHOW_USERS, payload: response.data})

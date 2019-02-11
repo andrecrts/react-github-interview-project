@@ -42,19 +42,12 @@ class ComSearch3 extends Component {
                     clone_url: _repo.clone_url
                 })
             });
-            
-            // for (let _i = 0; _i < response.data.length; _i++) {
-            //     const element = response[_i];
-            //     console.log(element);
-                
-            // }
 
             _form.setState({
                 state
             });
         }).catch(function(error){
             console.error(error);
-            //Perform action based on error
         });
     }
 
@@ -64,7 +57,6 @@ class ComSearch3 extends Component {
         this.setState({
             state
         });
-        // console.log(this.state);
     }
 
     render() {
@@ -101,11 +93,4 @@ class ComSearch3 extends Component {
 
 }
 
-// function mapStateToProps(state) {
-//     return {
-//       users: state.user.list
-//     }
-// }
-
 export default ComSearch3;
-// export default connect(mapStateToProps, { showUsers })(ComSearch1)
