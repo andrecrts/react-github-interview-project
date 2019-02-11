@@ -10,12 +10,13 @@ const bookmarkReducer = (state = initialState, action) => {
   switch (type) {
     case types.CREATE: {
       const newState = { ...state };
-      newState.bookmarks[payload.id] = payload;
+      console.log(payload);
+      newState.bookmarks[payload.data.id] = payload.data;
       return newState;
     }
     case types.DELETE: {
       const newState = { ...state };
-      delete newState.bookmarks[payload.id];
+      delete newState.bookmarks[payload.data.id];
       return newState;
     }
     default:

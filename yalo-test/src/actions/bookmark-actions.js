@@ -1,6 +1,6 @@
 import { createTypes, actionCreator } from 'redux-action-creator';
 
-const types = createTypes(
+export const types = createTypes(
   [
     'CREATE',
     'DELETE',
@@ -8,9 +8,8 @@ const types = createTypes(
   'BOOKMARK',
 );
 
-const actions = {
+export const actions = {
   createBookMark: actionCreator(types.CREATE, 'data'),
-  editCar: actionCreator(types.DELETE, 'data'),
+  deleteBookMark: actionCreator(types.DELETE, 'data'),
 };
 
-export default { types, actions };

@@ -3,19 +3,33 @@ import {
   Button,
   Card, CardBlock, CardSubtitle, CardText, CardTitle, Container,
 } from '@bootstrap-styled/v4/dist/@bootstrap-styled/v4';
+import { connect } from 'react-redux';
+import { actions } from '../../actions/bookmark-actions';
 
 class ReposList extends Component {
-  addToBookMark(repo) {
-    console.log(repo);
+  constructor(props) {
+    super(props);
+    this.addToBookMark = this.addToBookMark.bind(this);
+    this.removeBookMark = this.removeBookMark.bind(this);
   }
 
+  addToBookMark(repo) {
+    const { addBookMark } = this.props;
+    addBookMark({ data: repo });
+  };
+
+  removeBookMark(repo) {
+    const { removeBookMark } = this.props;
+    removeBookMark({ data: repo });
+  };
+
   render() {
-    const { repos } = this.props;
+    const { repos, bookmarkReducer: { bookmarks } } = this.props;
+    console.log(this.props);
     let listItems = [];
-    if (repos.items) {
-      const { items } = repos;
-      listItems = items.map(repo => (
-        <Card width="100%">
+    if (repos) {
+      listItems = repos.map(repo => (
+        <Card width="100%" key={repo.id}>
           <CardBlock>
             <CardTitle>{repo.full_name}</CardTitle>
             <CardSubtitle>
@@ -23,7 +37,14 @@ class ReposList extends Component {
               {repo.language}
             </CardSubtitle>
             <CardText>{repo.description}</CardText>
-            <Button color="primary" onClick={this.addToBookMark(repo)}>AddFavorite</Button>
+            <Button
+              color="primary"
+              onClick={
+                bookmarks[repo.id] ? () => this.removeBookMark(repo) : () => this.addToBookMark(repo)
+              }
+            >
+              {bookmarks[repo.id] ? 'Quitar Favorito' : 'Agregar Favorito'}
+            </Button>
           </CardBlock>
         </Card>
       ));
@@ -37,4 +58,16 @@ class ReposList extends Component {
   }
 }
 
-export default ReposList;
+const mapDispatchToProps = dispatch => (
+  {
+    addBookMark: (item) => {
+      dispatch(actions.createBookMark(item));
+    },
+    removeBookMark: (item) => {
+      dispatch(actions.deleteBookMark(item));
+    },
+  }
+);
+
+
+export default connect(state => state, mapDispatchToProps)(ReposList);

@@ -6,9 +6,11 @@ import {
   NavItem,
 } from '@bootstrap-styled/v4/dist/@bootstrap-styled/v4';
 import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import logo from './img/yalochat.png';
 import GitHubUsers from './pages/GitHubUsers';
 import Bookmarks from './pages/Bookmarks';
+import store from './store';
 
 const AppLogo = styled.img`
    height: 80px;
@@ -26,30 +28,28 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <Container>
-          <Navbar color="faded" light toggleable="lg">
-            <Container>
-              <div className="d-flex justify-content-between">
-                <NavbarBrand><AppLogo src={logo} alt="logo" /></NavbarBrand>
-              </div>
-              <Nav navbar className="mr-auto">
-                <NavItem>
-                  <Link to="/github">GitHub Users</Link>
-                </NavItem>
-                <NavItem>
-                  <Link to="/bookmarks">Bookmarks</Link>
-                </NavItem>
-              </Nav>
-            </Container>
-          </Navbar>
-          <div className="d-inline-block w-100">
-            <Route exact path="/" render={() => <h3>Selecciona una opción</h3>} />
-            <Route path="/github" component={GitHubUsers} />
-            <Route path="/bookmarks" component={Bookmarks} />
-          </div>
-        </Container>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Container>
+            <Navbar color="faded" light toggleable="lg">
+              <Container>
+                <div className="d-flex justify-content-between">
+                  <NavbarBrand><AppLogo src={logo} alt="logo" /></NavbarBrand>
+                </div>
+                <Nav navbar className="mr-auto">
+                  <NavItem>
+                    <Link to="/github">GitHub Users</Link>
+                  </NavItem>
+                </Nav>
+              </Container>
+            </Navbar>
+            <div className="d-inline-block w-100">
+              <Route exact path="/" render={() => <h3>Selecciona una opción</h3>} />
+              <Route path="/github" component={GitHubUsers} />
+            </div>
+          </Container>
+        </Router>
+      </Provider>
     );
   }
 }

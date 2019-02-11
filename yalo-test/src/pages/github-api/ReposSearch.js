@@ -10,7 +10,8 @@ class ReposSearch extends Component {
     super(props);
     this.state = {
       value: '',
-      searchResults: {},
+      searchResults: [],
+      error: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,13 +25,29 @@ class ReposSearch extends Component {
   async handleSubmit(event) {
     const { value } = this.state;
     event.preventDefault();
-    const result = await search(value);
-    this.setState({ searchResults: result });
+    search(value).then((result) => {
+      this.setState({ searchResults: result.items, error: null });
+    }, (error) => {
+      this.setState({ error });
+    });
   }
 
   render() {
     const { value } = this.state;
     const { searchResults } = this.state;
+    const { error } = this.state;
+
+    let element;
+
+    if (error) {
+      const { message } = error;
+      element = <h3>{message}</h3>;
+    } else if (searchResults.length > 0) {
+      element = <ReposList repos={searchResults} />;
+    } else {
+      element = <h3>No existen repos</h3>;
+    }
+
     return (
       <Container>
         <div className="d-inline-block">
@@ -46,7 +63,7 @@ class ReposSearch extends Component {
           </Form>
         </div>
         <div id="list">
-          <ReposList repos={searchResults} />
+          {element}
         </div>
       </Container>
     );
