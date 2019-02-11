@@ -10,7 +10,7 @@ const ComSectionOne = () => (
                 <img className="logoGit" src={logoGit} height="200" width="200" alt="GitHub" />
                 <Carousel.Caption>
                 <h3>1. Search by name using github api and list repositories.</h3>
-                <p>You can perform a search for ropositories if you know the name, click on the button so that it can show you the search result !!.</p>
+                <p>You can perform a search for ropositories if you know the <b>Name</b>, click on the button so that it can show you the search result !!.</p>
                 <Button variant="success">Press me</Button>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -26,7 +26,7 @@ const ComSectionOne = () => (
                 <img className="logoGit" src={logoGit} height="200" width="200" alt="GitHub" />
                 <Carousel.Caption>
                 <h3>3. Bookmark repositories, Search bookmarked repositories.</h3>
-                <p>You can perform a search for ropositories that have been marked, click on the button so that it can show you the search result !!..</p>
+                <p>You can perform a search for ropositories that have <b>Been marked</b>, click on the button so that it can show you the search result !!..</p>
                 <Button variant="warning">Press me</Button>
                 </Carousel.Caption>
             </Carousel.Item>

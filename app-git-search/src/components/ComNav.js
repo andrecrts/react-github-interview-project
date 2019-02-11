@@ -4,7 +4,7 @@ import logo from './../logoNav.svg';
 
 const ComNav = () => (
     <div>
-        <Navbar fixed="top" bg="light" expand="lg" >
+        <Navbar fixed="top" bg="dark" variant="dark" expand="lg" >
             <img src={logo} className="App-Navlogo" alt="logo" />
             <Navbar.Brand href="#home">App Git Search</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

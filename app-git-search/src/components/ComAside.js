@@ -13,8 +13,6 @@ const ComAside = () => (
                         <Form.Control as="textarea" rows="3" />
                     </Form.Group>
                     <Button variant="warning" type="submit">Search</Button>
-                <hr />
-                <h6>* The Bookmarked is required.</h6>
             </Alert>
         </div>
 );
