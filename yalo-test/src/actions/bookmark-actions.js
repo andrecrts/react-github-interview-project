@@ -12,4 +12,3 @@ export const actions = {
   createBookMark: actionCreator(types.CREATE, 'data'),
   deleteBookMark: actionCreator(types.DELETE, 'data'),
 };
-

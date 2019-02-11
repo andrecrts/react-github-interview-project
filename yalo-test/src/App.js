@@ -9,7 +9,6 @@ import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import logo from './img/yalochat.png';
 import GitHubUsers from './pages/GitHubUsers';
-import Bookmarks from './pages/Bookmarks';
 import store from './store';
 
 const AppLogo = styled.img`
