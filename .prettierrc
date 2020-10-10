@@ -4,5 +4,6 @@
    "useTabs": false,
    "semi": true,
    "printWidth": 120,
-   "trailingComma": "all"
+   "trailingComma": "all",
+   "endOfLine": "crlf"
 }
