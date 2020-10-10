@@ -13,8 +13,8 @@ const UserSearchPage: React.FC<UserSearchPageProps> = () => {
     validationSchema: Yup.object({
       search: Yup.string(),
     }),
-    onSubmit: async (values) => {
-      console.log(values);
+    onSubmit: async () => {
+      // console.log(values);
       // const { search } = values;
     },
   });

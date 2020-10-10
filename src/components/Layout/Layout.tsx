@@ -11,12 +11,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => (
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Link component={Nav.Link} to="/">
+          <Nav.Link as={Link} to="/">
             Search
-          </Link>
-          <Link component={Nav.Link} to="/bookmarks">
+          </Nav.Link>
+          <Nav.Link as={Link} to="/bookmarks">
             Bookmarks
-          </Link>
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

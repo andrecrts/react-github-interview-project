@@ -34,6 +34,9 @@ module.exports = {
         mjs: 'never',
       },
     ],
+    'no-console': 'off',
+    'arrow-parens': 'off',
+    'max-len': ['error', { code: 120, tabWidth: 2 }],
   },
   settings: {
     'import/extensions': ['.js', '.mjs', '.jsx', '.js', '.jsx', '.ts', '.tsx'],
@@ -42,6 +45,5 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
-    'no-console': 'off',
   },
 };

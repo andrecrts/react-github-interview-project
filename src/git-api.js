@@ -7,7 +7,7 @@ export const getUserRepos = (username) => {
   return axios.get(url).then((response) => response.data);
 };
 
-export const search = (query) => {
-  const url = `${BASE_URL}/search/repositories?q=${query}`;
+export const search = (query, page) => {
+  const url = `${BASE_URL}/search/repositories?q=${query}&p=${page}`;
   return axios.get(url).then((response) => response.data);
 };

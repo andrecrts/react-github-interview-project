@@ -7,12 +7,16 @@ const LayoutSearch: React.FC<{}> = ({ children }) => (
     <Row>
       <Col md={3} sm={4} xs={12}>
         <Nav className="flex-column" defaultActiveKey="/" variant="pills">
-          <Link component={Nav.Link} to="/">
-            Repository
-          </Link>
-          <Link component={Nav.Link} to="/user">
-            User
-          </Link>
+          <Nav.Item>
+            <Nav.Link as={Link} eventKey="/" to="/">
+              Repository
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link as={Link} eventKey="/user" to="/user">
+              User
+            </Nav.Link>
+          </Nav.Item>
         </Nav>
       </Col>
       <Col>{children}</Col>
