@@ -3,10 +3,17 @@ import {
   Button, Col, Nav, Navbar,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import yalo from '../../assets/img/yalo-logo.svg';
 
 export interface LayoutProps { }
 
+const CustomLink = styled(Button)`
+  color: white;
+  :hover {
+    color: white;
+  }
+`;
 const Layout: React.FC<LayoutProps> = ({ children }) => (
   <>
     <header>
@@ -34,10 +41,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => (
       <Col>
         Create with &hearts; by Carlos Barranco
       </Col>
-      <Col>
-        <Button href="https://github.com/cabaag" variant="link">
+      <Col xs="auto">
+        <CustomLink className="mr-2" href="https://github.com/cabaag" target="_blank" variant="link">
           Github
-        </Button>
+        </CustomLink>
+        <CustomLink className="mr-2" href="https://www.linkedin.com/in/cabaag/" target="_blank" variant="link">
+          LinkedIn
+        </CustomLink>
       </Col>
     </footer>
   </>
