@@ -15,7 +15,7 @@ export interface RepositorySearchPageProps { }
 const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
   // Redux connect
   const dispatch = useDispatch();
-  const { repositories } = useSelector<RootState, RepositoryState>(
+  const { repositories, totalCount } = useSelector<RootState, RepositoryState>(
     (state) => state?.repositoryReducer,
   );
   const bookmarks = useSelector<RootState, RepositoryType[]>(state => state?.bookmarksReducer?.bookmarks ?? []);
@@ -71,13 +71,28 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
           </Form>
         </Col>
       </Row>
-      {repositories?.length ? repositories.map((repo) => (
-        <Row key={repo.id}>
-          <Col>
-            <Repository bookmarked={bookmarks.some(mark => mark.id === repo.id)} repository={repo} />
-          </Col>
-        </Row>
-      )) : null}
+      {repositories?.length ? (
+        <>
+          <Row className="mb-2">
+            <Col>
+              <b>
+                {totalCount.toLocaleString()}
+                &nbsp; repository results
+              </b>
+            </Col>
+          </Row>
+          {
+            repositories.map((repo) => (
+              <Row key={repo.id}>
+                <Col>
+                  <Repository bookmarked={bookmarks.some(mark => mark.id === repo.id)} repository={repo} />
+                </Col>
+              </Row>
+            ))
+          }
+        </>
+
+      ) : null}
 
     </Container>
   );

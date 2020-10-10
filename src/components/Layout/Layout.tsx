@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import {
+  Button, Col, Nav, Navbar,
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import yalo from '../../assets/img/yalo-logo.svg';
 
@@ -28,6 +30,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => (
     <main className="mt-5">
       {children}
     </main>
+    <footer>
+      <Col>
+        Create with &hearts; by Carlos Barranco
+      </Col>
+      <Col>
+        <Button href="https://github.com/cabaag" variant="link">
+          Github
+        </Button>
+      </Col>
+    </footer>
   </>
 );
 

@@ -54,15 +54,17 @@ const Repository: React.FC<RepositoryProps> = ({ repository, bookmarked }) => {
         <Row>
           <Col className="d-flex align-items-center" xs="auto">
             <Star />
-            {' '}
+            &nbsp;
             {repository.stargazers_count}
           </Col>
+          {repository?.language
+            && (
+            <Col className="d-flex align-items-center" xs="auto">
+              {repository?.language}
+            </Col>
+)}
           <Col className="d-flex align-items-center" xs="auto">
-            {repository?.language}
-          </Col>
-          <Col className="d-flex align-items-center" xs="auto">
-            Updated
-            {' '}
+            Updated &nbsp;
             {moment(repository?.updated_at).fromNow()}
           </Col>
         </Row>

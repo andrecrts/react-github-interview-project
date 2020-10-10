@@ -34,7 +34,7 @@ const BookmarksPage: React.FC<BookmarksPageProps> = () => {
         </Col>
         <Col>
           <Form>
-            <Form.Group controlId="search">
+            <Form.Group className="m-0" controlId="search">
               <Form.Control
                 autoComplete="off"
                 onChange={handleChangeSearch}
