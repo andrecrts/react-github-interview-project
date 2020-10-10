@@ -1,6 +1,8 @@
 import moment from 'moment';
 import React, { memo, useCallback } from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import {
+  Button, Card, Col, Row,
+} from 'react-bootstrap';
 import { BookmarkFill, BookmarkPlus, Star } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -34,7 +36,9 @@ const Repository: React.FC<RepositoryProps> = ({ repository, bookmarked }) => {
       <Card.Header as="h5">
         <Row className="align-items-center">
           <Col>
-            {repository?.owner?.login}/{repository.name}
+            {repository?.owner?.login}
+            /
+            {repository.name}
           </Col>
           <Col xs="auto">
             <Button onClick={handleToggleBookmark} size="sm" variant="link">
@@ -49,13 +53,17 @@ const Repository: React.FC<RepositoryProps> = ({ repository, bookmarked }) => {
       <Card.Footer className="text-muted">
         <Row>
           <Col className="d-flex align-items-center" xs="auto">
-            <Star /> {repository.stargazers_count}
+            <Star />
+            {' '}
+            {repository.stargazers_count}
           </Col>
           <Col className="d-flex align-items-center" xs="auto">
             {repository?.language}
           </Col>
           <Col className="d-flex align-items-center" xs="auto">
-            Updated {moment(repository?.updated_at).fromNow()}
+            Updated
+            {' '}
+            {moment(repository?.updated_at).fromNow()}
           </Col>
         </Row>
       </Card.Footer>

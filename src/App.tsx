@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import Layout from './components/Layout/Layout';
 import SearchPage from './pages/SearchPage/SearchPage';
+import BookmarksPage from './pages/BookmarksPage/BookmarksPage';
 import store from './store';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/bookmarks">
-              <SearchPage />
+              <BookmarksPage />
             </Route>
             <Route path="/">
               <SearchPage />

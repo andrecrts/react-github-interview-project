@@ -17,10 +17,11 @@ const bookmarkReducer = (state = initialState, action: any) => {
     }
     case DELETE_BOOKMARK: {
       const index = state.bookmarks.findIndex((mark) => mark.id === payload.id);
+      console.log(index);
       if (index !== -1) {
         return {
           ...state,
-          bookmarks: [...state.bookmarks.splice(index, 1)],
+          bookmarks: [...state.bookmarks.slice(0, index), ...state.bookmarks.slice(index + 1)],
         };
       }
       return state;

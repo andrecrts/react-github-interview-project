@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { FETCH_REPOSITORIES, FETCH_REPOSITORIES_SUCCESS } from '../actions/repository';
 import github from '../services/github';
 import { RepositoryState } from '../types/states';
@@ -16,13 +17,13 @@ const repositoryReducer = (state = initialState, action: any) => {
       return { ...state, page: payload.page };
     case FETCH_REPOSITORIES_SUCCESS:
       // eslint-disable-next-line no-case-declarations
-      const { items, totalCount } = payload;
+      const { items, total_count } = payload;
       console.log(items);
 
       return {
         ...state,
         repositories: items,
-        totalCount,
+        totalCount: total_count,
       };
     default:
       return state;
