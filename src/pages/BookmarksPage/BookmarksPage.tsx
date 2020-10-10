@@ -28,17 +28,17 @@ const BookmarksPage: React.FC<BookmarksPageProps> = () => {
 
   return (
     <Container>
-      <Row>
-        <h2> Bookmarks </h2>
-      </Row>
-      <Row>
+      <Row className="align-items-center">
+        <Col>
+          <h2> Bookmarks </h2>
+        </Col>
         <Col>
           <Form>
             <Form.Group controlId="search">
               <Form.Control
                 autoComplete="off"
                 onChange={handleChangeSearch}
-                placeholder="Search repository"
+                placeholder="Search bookmark"
                 type="text"
               />
             </Form.Group>

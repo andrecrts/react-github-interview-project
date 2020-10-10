@@ -5,7 +5,7 @@ const initialState: BookmarkState = {
   bookmarks: [],
 };
 
-const bookmarkReducer = (state = initialState, action: any) => {
+const bookmarksReducer = (state = initialState, action: any) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -31,4 +31,4 @@ const bookmarkReducer = (state = initialState, action: any) => {
   }
 };
 
-export default bookmarkReducer;
+export default bookmarksReducer;

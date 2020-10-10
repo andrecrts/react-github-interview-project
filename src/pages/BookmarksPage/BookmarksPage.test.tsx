@@ -1,9 +1,9 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
-import App from './App';
+import BookmarksPage from './BookmarksPage';
 
 function setup(): ShallowWrapper {
-  return shallow(<App />);
+  return shallow(<BookmarksPage />);
 }
 
 test('should match snapshot', () => {

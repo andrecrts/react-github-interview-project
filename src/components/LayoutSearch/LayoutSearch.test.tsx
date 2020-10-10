@@ -1,9 +1,9 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
-import App from './App';
+import LayoutSearch from './LayoutSearch';
 
 function setup(): ShallowWrapper {
-  return shallow(<App />);
+  return shallow(<LayoutSearch />);
 }
 
 test('should match snapshot', () => {

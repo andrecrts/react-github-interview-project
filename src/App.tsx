@@ -5,7 +5,7 @@ import './App.scss';
 import Layout from './components/Layout/Layout';
 import SearchPage from './pages/SearchPage/SearchPage';
 import BookmarksPage from './pages/BookmarksPage/BookmarksPage';
-import store from './store';
+import store from './configureStore';
 
 function App() {
   return (
