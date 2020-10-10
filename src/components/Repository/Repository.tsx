@@ -35,13 +35,13 @@ const Repository: React.FC<RepositoryProps> = ({ repository, bookmarked }) => {
     <CardContent className="mb-3">
       <Card.Header as="h5">
         <Row className="align-items-center">
-          <Col>
+          <Col data-test="title">
             {repository?.owner?.login}
             /
             {repository.name}
           </Col>
           <Col xs="auto">
-            <Button onClick={handleToggleBookmark} size="sm" variant="link">
+            <Button data-test="toggleButton" onClick={handleToggleBookmark} size="sm" variant="link">
               {bookmarked ? <BookmarkFill /> : <BookmarkPlus />}
             </Button>
           </Col>
@@ -59,10 +59,10 @@ const Repository: React.FC<RepositoryProps> = ({ repository, bookmarked }) => {
           </Col>
           {repository?.language
             && (
-            <Col className="d-flex align-items-center" xs="auto">
-              {repository?.language}
-            </Col>
-)}
+              <Col className="d-flex align-items-center" data-test="language" xs="auto">
+                {repository?.language}
+              </Col>
+            )}
           <Col className="d-flex align-items-center" xs="auto">
             Updated &nbsp;
             {moment(repository?.updated_at).fromNow()}

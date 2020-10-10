@@ -1,4 +1,4 @@
-import { ShallowWrapper } from 'enzyme';
+import { ReactWrapper, ShallowWrapper } from 'enzyme';
 import { applyMiddleware, createStore } from 'redux';
 import { middlewares } from '../configureStore';
 import rootReducers from '../reducers';
@@ -18,8 +18,8 @@ export const storeFactory = (initialState: RootState) => {
 
 /**
  * Return node(s) with the given data-test attribute.
- * @param {ShallowWrapper} wrapper - Enzyme shallow wrapper.
+ * @param {ShallowWrapper |ReactWrapper} w - Enzyme shallow wrapper.
  * @param {string} val - Value of data-test attribute for search.
  * @returns {ShallowWrapper}
  */
-export const findByTestAttr = (wrapper: ShallowWrapper, val: string) => wrapper.find(`[data-test="${val}"]`);
+export const findByTestAttr = (w: ShallowWrapper | ReactWrapper, val: string) => w.find(`[data-test="${val}"]`);

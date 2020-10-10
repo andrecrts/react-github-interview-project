@@ -22,6 +22,7 @@ module.exports = {
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'react/prop-types': 0,
     'react/jsx-sort-props': [1, { ignoreCase: true }],
+    'react/jsx-props-no-spreading': 'off',
     'linebreak-style': ['error', 'windows'],
     'import/extensions': [
       'error',

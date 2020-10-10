@@ -9,7 +9,8 @@ import Repository from '../../components/Repository/Repository';
 import { RepositoryType } from '../../types/repository';
 import { RootState } from '../../types/states';
 
-export interface BookmarksPageProps { }
+export interface BookmarksPageProps {
+}
 
 const Empty = styled.div`
   font-size: 30px;
