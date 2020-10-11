@@ -1,8 +1,10 @@
 import { useFormik } from 'formik';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
-  Col, Container, Form, Row,
+  Button,
+  Col, Container, Form, InputGroup, Row, Spinner,
 } from 'react-bootstrap';
+import { Search } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { fetchRepositoriesAction, setRepositories } from '../../actions/repository';
@@ -24,6 +26,8 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
     [dispatch],
   );
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(
     () => () => {
       dispatch(
@@ -36,6 +40,10 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
     [dispatch],
   );
 
+  useEffect(() => {
+    setLoading(false);
+  }, [repositories]);
+
   const formik = useFormik({
     initialValues: {
       search: '',
@@ -44,7 +52,17 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
       search: Yup.string(),
     }),
     onSubmit: async ({ search }) => {
-      fetchRepositories(search);
+      if (search) {
+        setLoading(true);
+        fetchRepositories(search);
+      } else {
+        dispatch(
+          setRepositories({
+            items: [],
+            totalCount: 0,
+          }),
+        );
+      }
     },
   });
 
@@ -59,14 +77,29 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
         <Col>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="search">
-              <Form.Control
-                autoComplete="off"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                placeholder="Search repository"
-                type="text"
-                value={formik.values.search}
-              />
+              <InputGroup>
+                <Form.Control
+                  autoComplete="off"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  placeholder="Search repository"
+                  type="text"
+                  value={formik.values.search}
+                />
+                <InputGroup.Append>
+                  {loading
+                    ? (
+                      <Button className="px-3" disabled size="sm" variant="outline-secondary">
+                        <Spinner animation="border" size="sm" />
+                      </Button>
+                    )
+                    : (
+                      <Button className="px-3" size="sm" type="submit" variant="outline-secondary">
+                        <Search />
+                      </Button>
+                    )}
+                </InputGroup.Append>
+              </InputGroup>
             </Form.Group>
           </Form>
         </Col>

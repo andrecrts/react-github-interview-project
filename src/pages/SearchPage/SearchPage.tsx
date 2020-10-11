@@ -4,7 +4,7 @@ import LayoutSearch from '../../components/LayoutSearch/LayoutSearch';
 import RepositorySearchPage from '../RepositorySearchPage/RepositorySearchPage';
 import UserSearchPage from '../UserSearchPage/UserSearchPage';
 
-export interface MainPageProps {}
+export interface MainPageProps { }
 
 const SearchPage: React.FC<MainPageProps> = () => (
   <Router>
