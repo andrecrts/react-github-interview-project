@@ -19,7 +19,6 @@ const bookmarksReducer = (state = initialState, action: any) => {
     }
     case DELETE_BOOKMARK: {
       const index = state.bookmarks.findIndex((mark) => mark.id === payload.id);
-      console.log(index);
       if (index !== -1) {
         const bookmarks = [...state.bookmarks.slice(0, index), ...state.bookmarks.slice(index + 1)];
         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));

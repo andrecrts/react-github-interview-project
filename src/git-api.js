@@ -8,6 +8,6 @@ export const getUserRepos = (username) => {
 };
 
 export const search = (query, page) => {
-  const url = `${BASE_URL}/search/repositories?q=${query}&p=${page}`;
+  const url = `${BASE_URL}/search/repositories?q=${query}&page=${page}`;
   return axios.get(url).then((response) => response.data);
 };
