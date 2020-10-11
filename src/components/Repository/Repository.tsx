@@ -43,7 +43,7 @@ const Repository: React.FC<RepositoryProps> = ({ repository, bookmarked }) => {
       <Card.Header as="h5">
         <Row className="align-items-center">
           <Col data-test="title">
-            <a href={repository.html_url} rel="noreferrer" target="_blank">
+            <a href={repository.html_url} rel="noopener noreferrer" target="_blank">
               {repository?.owner?.login}
               /
               {repository.name}

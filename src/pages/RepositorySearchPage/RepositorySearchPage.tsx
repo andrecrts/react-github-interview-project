@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import React, { useCallback, useEffect, useState } from 'react';
 import {
   Button,
-  Col, Container, Form, InputGroup, Row, Spinner,
+  Col, Container, Form, InputGroup, Pagination, Row, Spinner,
 } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +17,7 @@ export interface RepositorySearchPageProps { }
 const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
   // Redux connect
   const dispatch = useDispatch();
-  const { repositories, totalCount } = useSelector<RootState, RepositoryState>(
+  const { repositories, totalCount, page: activePage } = useSelector<RootState, RepositoryState>(
     (state) => state?.repositoryReducer,
   );
   const bookmarks = useSelector<RootState, RepositoryType[]>(state => state?.bookmarksReducer?.bookmarks ?? []);
@@ -27,6 +27,7 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
   );
 
   const [loading, setLoading] = useState(false);
+  const [localSearch, setLocalSearch] = useState('');
 
   useEffect(
     () => () => {
@@ -52,6 +53,7 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
       search: Yup.string(),
     }),
     onSubmit: async ({ search }) => {
+      setLocalSearch(search);
       if (search) {
         setLoading(true);
         fetchRepositories(search);
@@ -70,6 +72,43 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
     formik.handleSubmit();
     e.preventDefault();
   }, [formik]);
+
+  const handleChangePage = useCallback((page: number) => {
+    window.scrollTo(0, 0);
+    setLoading(true);
+    fetchRepositories(localSearch, page);
+  }, [localSearch, fetchRepositories]);
+
+  const renderItemsPagination = useCallback(() => {
+    const items = [];
+    const maxPage = totalCount % 30;
+    let finalPage = activePage + 5 < 10 ? 10 : activePage + 5;
+    finalPage = finalPage + 5 < maxPage ? finalPage : maxPage;
+    const initialPage = activePage - 5 <= 0 ? 1 : activePage - 5;
+
+    if (initialPage !== 1) {
+      items.push(<Pagination.Item key={0} onClick={() => handleChangePage(1)}> 1</Pagination.Item>);
+      items.push(<Pagination.Ellipsis key={-1} />);
+    }
+
+    // eslint-disable-next-line no-plusplus
+    for (let page = initialPage; page <= finalPage; page++) {
+      items.push(
+        <Pagination.Item active={page === activePage} key={page} onClick={() => handleChangePage(page)}>
+          {page}
+        </Pagination.Item>,
+      );
+    }
+    if (activePage + 5 < maxPage) {
+      items.push(<Pagination.Ellipsis key={-2} />);
+      items.push(
+        <Pagination.Item key={maxPage + 1} onClick={() => handleChangePage(maxPage)}>
+          {maxPage}
+        </Pagination.Item>,
+      );
+    }
+    return items;
+  }, [activePage, totalCount, handleChangePage]);
 
   return (
     <Container>
@@ -123,8 +162,14 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
               </Row>
             ))
           }
+          <Row className="justify-content-center">
+            <Col xs="auto">
+              <Pagination>
+                {renderItemsPagination()}
+              </Pagination>
+            </Col>
+          </Row>
         </>
-
       ) : null}
 
     </Container>
