@@ -29,7 +29,7 @@ const UserSearchPage: React.FC<UserSearchPageProps> = () => {
         }),
       );
     },
-    [],
+    [dispatch],
   );
 
   const formik = useFormik({
@@ -47,7 +47,7 @@ const UserSearchPage: React.FC<UserSearchPageProps> = () => {
   const handleSubmit = useCallback((e: React.FormEvent<HTMLElement>) => {
     formik.handleSubmit();
     e.preventDefault();
-  }, []);
+  }, [formik]);
 
   return (
     <Container>

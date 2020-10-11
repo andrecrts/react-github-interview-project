@@ -33,7 +33,7 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
         }),
       );
     },
-    [],
+    [dispatch],
   );
 
   const formik = useFormik({
@@ -51,7 +51,7 @@ const RepositorySearchPage: React.FC<RepositorySearchPageProps> = () => {
   const handleSubmit = useCallback((e: React.FormEvent<HTMLElement>) => {
     formik.handleSubmit();
     e.preventDefault();
-  }, []);
+  }, [formik]);
 
   return (
     <Container>
