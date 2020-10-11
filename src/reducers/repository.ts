@@ -18,8 +18,6 @@ const repositoryReducer = (state = initialState, action: any) => {
     case FETCH_REPOSITORIES_SUCCESS:
       // eslint-disable-next-line no-case-declarations
       const { items, total_count } = payload;
-      console.log(items);
-
       return {
         ...state,
         repositories: items,

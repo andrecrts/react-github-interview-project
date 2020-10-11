@@ -2,7 +2,7 @@ import { CREATE_BOOKMARK, DELETE_BOOKMARK } from '../actions/bookmark';
 import { BookmarkState } from '../types/states';
 
 const initialState: BookmarkState = {
-  bookmarks: [],
+  bookmarks: JSON.parse(localStorage.getItem('bookmarks') ?? '[]') || [],
 };
 
 const bookmarksReducer = (state = initialState, action: any) => {
@@ -10,18 +10,22 @@ const bookmarksReducer = (state = initialState, action: any) => {
 
   switch (type) {
     case CREATE_BOOKMARK: {
+      const bookmarks = [...state.bookmarks, payload?.repository];
+      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
       return {
         ...state,
-        bookmarks: [...state.bookmarks, payload?.repository],
+        bookmarks,
       };
     }
     case DELETE_BOOKMARK: {
       const index = state.bookmarks.findIndex((mark) => mark.id === payload.id);
       console.log(index);
       if (index !== -1) {
+        const bookmarks = [...state.bookmarks.slice(0, index), ...state.bookmarks.slice(index + 1)];
+        localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
         return {
           ...state,
-          bookmarks: [...state.bookmarks.slice(0, index), ...state.bookmarks.slice(index + 1)],
+          bookmarks,
         };
       }
       return state;
