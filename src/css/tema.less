@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'Questrial';
+    src: url('./fonts/Questrial/Questrial-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+// default button css off
+button, input[type="submit"], input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+body {
+  // background-image: url('../images/background.png');
+  background-color: @colorBackground;
+  font-family: 'Questrial';
+  margin: 0px;
+  padding: 0px;
+}
+
+
+p{
+  color: @colorPrimaryText;
+  font-size: 22px;
+  text-align: center;
+  span{
+    color: @colorSecundaryText;
+    font-size: 26px;
+  }
+}
+
+.center-block{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-green{
+  color: @simpleColorGreen;
+}
+.text-yellow{
+  color: @simpleColorYellow
+}
+

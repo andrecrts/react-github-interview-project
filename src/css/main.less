@@ -1,0 +1,80 @@
+//----------------------------------------------Nav-----------------------------------------------
+.nav-div{
+    width: 100%;
+    margin-bottom: 35px;
+    background-color: aliceblue;
+  }
+  .to-home{
+    display: block;
+    margin: 10px auto 10px auto ;
+    text-align: center;
+    width: 160px;
+    color: @colorNavLogo;
+    font-size: 30px;
+    span{
+      font-size: 14px;
+    }
+  }
+  .nav-btn{
+    width: 94%;
+    background-color: @colorBackground;
+    border-radius: 5px;
+    margin: 10px auto 10px auto ;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    color: @colorNavNavButtonsText;
+    font-size: 16px;
+    &:hover{
+      background-color: @colorNavButtonsLigth;
+    }
+  }
+  .nav-border{
+    box-shadow: 6px 6px 3px 0px rgba(0,0,0,0.75);
+  }
+
+//----------------------------------------------Search-----------------------------------------------
+.products-cont{
+  margin: 45px auto 35px auto;
+  width: 90%;
+}
+.rastreo-search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .ant-form-item{
+    margin-top: 13px;
+  }
+  label{
+    color: white;
+    font-size: 18px;
+  }
+}
+
+
+//----------------------------------------------Others-----------------------------------------------
+  .loading-message{
+    width: 100%;
+    text-align: center;
+    margin: 120px 0px 130px 0px;
+    color: @colorPrimaryText;
+    h1{
+      color: @colorSecundaryText;
+      font-size: 40px;
+    }
+    svg{
+      font-size: 40px;
+    }
+  }
+
+  .home-body{
+    height: 100vh;
+    width: 100%;
+    background-image: url('../images/background.png');
+    background-color: @colorBackground;
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+  }
