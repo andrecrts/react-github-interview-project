@@ -1,0 +1,144 @@
+
+//---------------------------------------------ButtonMlg-----------------------------------------------
+@color_blueLight: #27c9e6;
+@color_red: #f14545;
+@color_purple: #c02792;
+@color_purpleLigth: #e45ebc;
+@color_blue: #4889ca;
+@color_green: #27c041;
+@color_dark: #343a40 ;
+@color_darkSemiLigth: rgba(10, 10, 10, 0.6);
+@color_darkUltraLigth: #dddddd ;
+@color_darkLigth: #687079 ;
+@color_darkFull: rgb(39, 39, 39);
+@color_lightText: #ffffff;
+@color_primary: #fab624;
+@color_primaryDark: #c08506;
+@color_primaryLigth: #fdcf6b;
+@color_transparentDark: rgba(10, 10, 10, 0.2);
+@color_transparentLigth: rgba(59, 59, 59, 0.2);
+ 
+.btn-mlg{
+  margin: 10px 5px 10px 5px;
+  border-radius: 3.5px;
+  padding: 8px 4px 8px 4px;  
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: .3s all ease;
+  svg{
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  &-yellow{
+    color: @color_lightText;
+    text-shadow: 2px 2px 2px @color_dark;
+    background-color: @color_primary;
+    box-shadow: 1px 1px 10px rgba(50,50,50,.4);
+    svg{
+      font-weight: bold;
+    }
+  }
+  &-yellow-outline{
+    color: @color_primary;
+    background-color: transparent;
+    border: 1px solid @color_primary;
+    box-shadow: 1px 1px 10px rgba(50,50,50,.4);
+  }
+  &-blue-outline{
+    color: @color_blue;
+    background-color: transparent;
+    border: 1px solid @color_blue;
+    box-shadow: 1px 1px 10px rgba(50,50,50,.4);
+  }
+  &-blue{
+    color: @color_lightText;
+    background-color: @color_blue;
+    box-shadow: 1px 1px 10px rgba(50,50,50,.4);
+  }
+  &-transparent-white{
+    color: @color_lightText;
+    background-color: transparent;
+  }
+  &-red{
+    color: @color_lightText;
+    background-color: @color_red;
+    box-shadow: 1px 1px 10px rgba(50,50,50,.4);
+  }
+  &-purple{
+    color: @color_lightText;
+    background-color: @color_purple;
+    box-shadow: 1px 1px 10px rgba(50,50,50,.4);
+  }
+  &-green{
+    color: @color_lightText;
+    background-color: @color_green;
+    box-shadow: 1px 1px 10px rgba(50,50,50,.4);
+  }
+  &-big{
+    font-size: 18px;
+    svg{
+      font-size: 30px;
+      margin-right: 8px;    
+    }
+  }
+  &-small{
+    font-size: 14px;
+    svg{
+      font-size: 18px;
+      margin-right: 4px;    
+    }
+  }
+  &-minsvg{
+    font-size: 10px;
+    svg{
+      font-size: 13px;
+      margin-left: 3px; 
+    }
+  }
+  &:hover {
+    box-shadow: 1px 1px 20px rgba(150,150,150,.2);
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  &:focus {
+    outline: 0;
+  }
+  &:active {
+    transform: scale(0.9);
+  }
+  &-block{
+    color: @color_lightText;
+    background-color: @color_darkLigth;
+    &:hover {
+      box-shadow: 0px 0px 0px rgba(150,150,150,.2);
+      margin-left: 0px;
+      cursor: not-allowed;
+    }
+    &:focus {
+      outline: 0;
+    }
+    &:active {
+      transform: scale(1);
+    }
+  }
+}
+
+//---------------------------------------------------InvisibleButton--------------------------------------------------
+@color_IB_transparentDark: rgba(10, 10, 10, 0.2);
+@color_IB_transparentLigth: rgba(59, 59, 59, 0.2);
+.invisible-button{
+  z-index: 1;
+  background-color: @color_IB_transparentDark;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  &:hover {
+    background-color: @color_IB_transparentLigth;
+    cursor: pointer;
+  }
+}
