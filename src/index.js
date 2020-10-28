@@ -31,6 +31,7 @@ ReactDOM.render(
 							<SearchPage />
 						</Route>
 					</Switch>
+					<div class="copy small-text p-t-10">By <a href="https://github.com/danioso" target="_blank" rel="noreferrer">Daniel Osorio</a></div>
 				</div>
 			</Router>
 		</Provider>

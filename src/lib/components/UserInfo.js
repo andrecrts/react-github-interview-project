@@ -3,13 +3,28 @@ import { connect } from 'react-redux';
 
 import RepositoriesCount from './RepositoriesCount';
 
+
+import { ExternalIcon } from '../icons';
+
+import styled from 'styled-components'
+
+const Avatar = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+`
+
 const UserInfo = ({owner}) => {
 	if(owner){
 		return (
-			<div className="user-info">
-				<img src={owner.avatar_url} alt="Hello world"></img>
-				<div>{owner.login}</div>
-				<a href={owner.html_url}>{owner.html_url}</a>
+			<div className="header user-info">
+				<div className="avatar">
+					<Avatar src={owner.avatar_url} alt={owner.login}></Avatar>
+				</div>
+				<div className="user">
+					<h2>{owner.login}</h2>
+					<a className="small-text" href={owner.html_url}>{owner.html_url} <ExternalIcon /></a>
+				</div>
 				<RepositoriesCount />
 			</div>
 		)

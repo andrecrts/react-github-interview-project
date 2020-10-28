@@ -12,9 +12,6 @@ import styled from 'styled-components'
 const Container = styled.div`
 
 `
-const Name = styled.a`
-  color: blue;
-`
 const Avatar = styled.img`
   width: 50px;
   height: 50px;
@@ -23,7 +20,7 @@ const Avatar = styled.img`
 
 const Repository = ( props ) => {
 
-	const { id, name, full_name, description, html_url, stargazers_count, watchers_count, owner, is_bookmarked, showAvatar = true } = props
+	const { id, name, full_name, description, html_url, stargazers_count, watchers_count, owner, is_bookmarked, showAvatar = true, showDelete = false } = props
 	const { repositoryAddAction, repositoryRemoveAction } = props
 	const repository = { 
 		id, 
@@ -50,7 +47,7 @@ const Repository = ( props ) => {
 
 		<div className="information">
 			<div className="title">
-				<a href={html_url} target="_blank" title={`Visit the project ${full_name} hosted in github`}>
+				<a href={html_url} target="_blank" rel="noreferrer" title={`Visit the project ${full_name} hosted in github`}>
 					<span className="label">
 						{name}
 					</span>
@@ -62,7 +59,7 @@ const Repository = ( props ) => {
 
 			{
 				is_bookmarked
-				? <button className="button buttom-bookmark bookmarked" onClick={() => repositoryRemoveAction(id)}><BookmarkIcon /></button>
+				? <button className="button buttom-bookmark bookmarked" onClick={() => repositoryRemoveAction(id)}>{(showDelete) ? <DeleteIcon /> : <BookmarkIcon />}</button>
 				: <button className="button buttom-bookmark" onClick={() => repositoryAddAction(repository)}><BookmarkIcon /></button>
 			}
 
