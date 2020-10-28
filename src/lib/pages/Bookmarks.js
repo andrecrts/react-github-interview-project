@@ -1,10 +1,12 @@
 import List from '../components/List';
 import Navigation from '../components/Navigation';
+import BookmarksInfo from '../components/BookmarksInfo';
 
 const BookmarksPage = () => (
 	<div className="bookmarks-page">
-		<Navigation />
-		<h2>Bookmarks</h2>
+		<Navigation 
+			showBookmarks={false} />
+		<BookmarksInfo />
 		<List source="bookmarks" />
 	</div>
 )

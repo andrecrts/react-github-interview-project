@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { repositoryAddAction, repositoryRemoveAction } from '../actions/bookmarkActions';
-import { searchRepositoriesAction } from '../actions/searchActions';
 
 import { Link } from "react-router-dom";
 
@@ -24,7 +23,7 @@ const Avatar = styled.img`
 const Repository = ( props ) => {
 
 	const { id, name, full_name, description, html_url, stargazers_count, watchers_count, owner, is_bookmarked, showAvatar = true } = props
-	const { repositoryAddAction, repositoryRemoveAction, searchRepositoriesAction } = props
+	const { repositoryAddAction, repositoryRemoveAction } = props
 	const repository = { 
 		id, 
 		name, 
@@ -37,18 +36,9 @@ const Repository = ( props ) => {
 		is_bookmarked
 	}
 
-	const handleSearchByUser = () => {
-		searchRepositoriesAction({
-			username: owner.login,
-			query: ""
-		})
-	}
-
-	console.log('showAvatar', showAvatar)
-
 	return (
 	<Container key={id}>
-		<div><Link to={`/user/${owner.login}`} onClick={handleSearchByUser}>{owner.login}</Link></div>
+		<div><Link to={`/user/${owner.login}`}>{owner.login}</Link></div>
 		<Name href={html_url}>{name}</Name>
 		<div>{full_name}</div>
 		<div>{description} - {stargazers_count} - {watchers_count}</div>
@@ -66,5 +56,4 @@ const Repository = ( props ) => {
 export default connect(null, {
 	repositoryAddAction: repositoryAddAction,
 	repositoryRemoveAction: repositoryRemoveAction,
-	searchRepositoriesAction: searchRepositoriesAction,
 })(Repository);

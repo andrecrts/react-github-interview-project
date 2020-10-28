@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 
-const Navigation = () => (
+import RepositoriesCount from './RepositoriesCount';
+
+const Navigation = ({showSearch = true, showBookmarks = true}) => (
 	<ul>
-		<li><Link to="/">Home</Link></li>
-		<li><Link to="/bookmarks">Bookmarks</Link></li>
+		{showSearch && <li><Link to="/">Search</Link></li>}
+		{showBookmarks && 
+			<li>
+				<Link to="/bookmarks">
+					Bookmarks
+					<RepositoriesCount source="bookmarks" />
+				</Link>
+			</li>
+		}
 	</ul>
 )
 

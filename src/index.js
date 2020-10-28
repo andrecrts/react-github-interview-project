@@ -8,7 +8,7 @@ import configureStore from './lib/store';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import HomePage from './lib/pages/Home';
+import SearchPage from './lib/pages/Search';
 import BookmarksPage from './lib/pages/Bookmarks';
 import UserPage from './lib/pages/User';
 
@@ -23,11 +23,11 @@ ReactDOM.render(
 					<Route path="/bookmarks">
 						<BookmarksPage />
 					</Route>
-					<Route path="/user/:user">
+					<Route path="/user/:username">
 						<UserPage />
 					</Route>
 					<Route path="/">
-						<HomePage />
+						<SearchPage />
 					</Route>
 				</Switch>
 			</Router>

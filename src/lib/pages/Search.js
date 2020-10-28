@@ -4,7 +4,8 @@ import Navigation from '../components/Navigation';
 
 const HomePage = () => (
 	<div className="home-page">
-		<Navigation />
+		<Navigation 
+			showSearch={false}/>
 		<h2>Welcome</h2>
 		<Search />
 		<List source="repositories" />
