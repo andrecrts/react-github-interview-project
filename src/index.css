@@ -1,3 +1,54 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Default styles from React boileplate */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +61,178 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* App styles */
+
+html {
+	min-height: 100%;
+	background: rgb(255,255,255);
+	background: linear-gradient(190deg, rgba(255,255,255,1) 0%, rgba(243,245,254,1) 100%);
+}
+
+.app {
+	margin: 2rem auto;
+	padding: 2rem;
+	max-width: 400px;
+	border: 1px solid #eee;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, 0.05);
+}
+
+.icon {
+	width: 1rem;
+	height: 1rem;
+}
+
+a {
+	text-decoration: none;
+	color: #646d9e;
+	transition: color 0.2s ease;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #3c4579;
+	transition: transform 0.2s ease;
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	border: 1px solid #eee;
+	height: 1rem;
+	border-radius: 2rem;
+	padding: .4rem 1rem;
+	background: rgb(255,255,255);
+	background: linear-gradient(190deg, rgba(255,255,255,1) 0%, rgba(248,249,255,1) 100%);
+	transition: border-color 0.2s ease;
+}
+
+.button:hover {
+	border-color: #ddd;
+	transition: border-color 0.2s ease;
+}
+
+.button .icon {
+	transition: transform 0.2s ease;
+	width: 1rem;
+	height: 1rem;
+}
+
+.button.button-side-left {
+	padding: .4rem 1rem .4rem .8rem;
+}
+
+.button.button-side-left .icon {
+	margin-right: 10px;
+}
+
+.button.button-side-left:hover .icon {
+	transform: translate(-3px, 0);
+}
+
+.button.button-side-right {
+	padding: .4rem .8rem .4rem 1rem;
+}
+
+.button.button-side-right .icon {
+	margin-left: 10px;
+}
+
+.button.button-side-right:hover .icon {
+	transform: translate(3px, 0);
+}
+
+.button .badge {
+	border: 1px solid #ddd;
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+	border-radius: 1rem;
+	height: 1.2rem;
+	min-width: 1.2rem;
+	line-height: 1.2rem;
+	padding: 0 .2rem;
+	font-size: 0.8rem;
+	margin: 0 0 0 .5rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+.navigation {
+	display: flex;
+	justify-content: space-between;
+}
+
+.navigation-item {
+	
+}
+
+.repository {
+	position: relative;
+	display: flex;
+	padding: 1rem 0;
+	border-bottom: 1px solid #eee;
+}
+
+.repository .information {
+	padding: 0 0 0 1rem;
+}
+
+.repository .information .title {
+	font-size: 1.4rem;
+}
+
+.repository .information .title a {
+	display: flex;
+	align-items: center;
+}
+
+.repository .information .title .label {
+	max-width: 220px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+}
+.repository .information .title .icon {
+	
+}
+
+.repository .information .author {
+	font-size: 1rem;
+	margin-top: .6rem;
+}
+
+.repository .information .title .icon {
+	margin-left: .5rem;
+}
+
+.repository .information .description {
+	font-size: 0.8rem;
+	margin-top: .6rem;
+	line-height: 130%;
+	color: #6d6d7b;
+}
+
+.buttom-bookmark {
+	position: absolute;
+	top: 1rem;
+	right: 0rem;
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: .5rem;
+	cursor: pointer;
+}
+
+.buttom-bookmark .icon {
+	width: 2.5rem;
+	height: 2.5rem;
+}
+
+.bookmarked {
+	background: rgb(177,176,219);
+	background: linear-gradient(190deg, rgba(177,176,219,1) 0%, rgba(100,97,172,1) 100%);
+	color: #fff;
+	border: #6461ac;
 }

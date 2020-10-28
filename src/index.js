@@ -19,17 +19,19 @@ ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<Router>
-				<Switch>
-					<Route path="/bookmarks">
-						<BookmarksPage />
-					</Route>
-					<Route path="/user/:username">
-						<UserPage />
-					</Route>
-					<Route path="/">
-						<SearchPage />
-					</Route>
-				</Switch>
+				<div className="app">
+					<Switch>
+						<Route path="/bookmarks">
+							<BookmarksPage />
+						</Route>
+						<Route path="/user/:username">
+							<UserPage />
+						</Route>
+						<Route path="/">
+							<SearchPage />
+						</Route>
+					</Switch>
+				</div>
 			</Router>
 		</Provider>
 	</React.StrictMode>,

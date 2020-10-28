@@ -3,21 +3,22 @@ import { connect } from 'react-redux';
 
 import { repositoryAddAction, repositoryRemoveAction } from '../actions/bookmarkActions';
 
+import { BookmarkIcon, ExternalIcon, DeleteIcon } from '../icons';
+
 import { Link } from "react-router-dom";
 
 import styled from 'styled-components'
 
 const Container = styled.div`
-  border: 1px solid #eee;
-  margin: 20px;
+
 `
 const Name = styled.a`
   color: blue;
 `
 const Avatar = styled.img`
-  border: 1px solid red;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
 `
 
 const Repository = ( props ) => {
@@ -37,19 +38,36 @@ const Repository = ( props ) => {
 	}
 
 	return (
-	<Container key={id}>
-		<div><Link to={`/user/${owner.login}`}>{owner.login}</Link></div>
-		<Name href={html_url}>{name}</Name>
-		<div>{full_name}</div>
-		<div>{description} - {stargazers_count} - {watchers_count}</div>
-		{showAvatar && <a href={owner.html_url}>
-			<Avatar src={owner.avatar_url} alt="Hello world"></Avatar>
-		</a>}
-		{
-			is_bookmarked
-				? <button onClick={() => repositoryRemoveAction(id)}>Remove</button>
-				: <button onClick={() => repositoryAddAction(repository)}>Add</button>
+	<Container key={id} className="repository">
+
+		{showAvatar && 
+			<div className="avatar">
+				<Link to={`/user/${owner.login}`} title={`Find more projects from ${name}`}>
+					<Avatar src={owner.avatar_url} alt={full_name}></Avatar>
+				</Link>
+			</div>
 		}
+
+		<div className="information">
+			<div className="title">
+				<a href={html_url} target="_blank" title={`Visit the project ${full_name} hosted in github`}>
+					<span className="label">
+						{name}
+					</span>
+					<ExternalIcon />
+				</a>
+			</div>
+			<div className="author"><Link to={`/user/${owner.login}`} title={`Find more projects from ${name}`}>{owner.login}</Link></div>
+			<p className="description">{description}</p>
+
+			{
+				is_bookmarked
+				? <button className="button buttom-bookmark bookmarked" onClick={() => repositoryRemoveAction(id)}><BookmarkIcon /></button>
+				: <button className="button buttom-bookmark" onClick={() => repositoryAddAction(repository)}><BookmarkIcon /></button>
+			}
+
+		</div>
+		
 	</Container>
 )};
 

@@ -6,7 +6,7 @@ import RepositoriesCount from './RepositoriesCount';
 const UserInfo = ({owner}) => {
 	if(owner){
 		return (
-			<div>
+			<div className="user-info">
 				<img src={owner.avatar_url} alt="Hello world"></img>
 				<div>{owner.login}</div>
 				<a href={owner.html_url}>{owner.html_url}</a>

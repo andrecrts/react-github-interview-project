@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Repository from './Repository';
 
 const List = ({items, showAvatar}) => (
-	<div>
+	<div className="list">
 		{items.map((item, index) => (
 			<Repository key={item.id} showAvatar={showAvatar} {...item} />
 		))}

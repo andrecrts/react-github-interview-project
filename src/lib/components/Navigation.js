@@ -2,17 +2,29 @@ import { Link } from "react-router-dom";
 
 import RepositoriesCount from './RepositoriesCount';
 
+import { ArrowLeftIcon, ArrowRightIcon } from '../icons';
+
 const Navigation = ({showSearch = true, showBookmarks = true}) => (
-	<ul>
-		{showSearch && <li><Link to="/">Search</Link></li>}
-		{showBookmarks && 
-			<li>
-				<Link to="/bookmarks">
-					Bookmarks
-					<RepositoriesCount source="bookmarks" />
+	<ul className="navigation">
+		<li className="navigation-item navigation-item-search">
+			{showSearch && 
+				<Link to="/" className="button button-side-left">
+					<ArrowLeftIcon />
+					<span>Search</span>
 				</Link>
-			</li>
-		}
+			}
+		</li>
+		<li className="navigation-item navigation-item-bookmarks">
+			{showBookmarks && 
+				<Link to="/bookmarks" className="button button-side-right">
+					<span>Bookmarks</span>
+					<div className="badge">
+						<RepositoriesCount source="bookmarks" />
+					</div>
+					<ArrowRightIcon />
+				</Link>
+			}
+		</li>
 	</ul>
 )
 
