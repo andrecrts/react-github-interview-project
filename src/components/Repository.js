@@ -54,8 +54,8 @@ const Repository = ( props ) => {
 
 			{
 				is_bookmarked
-				? <button className="button buttom-bookmark bookmarked" onClick={() => removeAction(id)}>{(showDelete) ? <DeleteIcon /> : <BookmarkIcon />}</button>
-				: <button className="button buttom-bookmark" onClick={() => addAction(repository)}><BookmarkIcon /></button>
+				? <button className="button buttom-bookmark bookmarked" onClick={function() {removeAction(id)} }>{(showDelete) ? <DeleteIcon /> : <BookmarkIcon />}</button>
+				: <button className="button buttom-bookmark" onClick={function() {addAction(repository)} }><BookmarkIcon /></button>
 			}
 
 		</div>

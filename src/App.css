@@ -244,7 +244,7 @@ h2 {
 
 .repository .bookmarked {
 	background: rgb(177,176,219);
-	background: linear-gradient(190deg, rgba(177,176,219,1) 0%, rgba(100,97,172,1) 100%);
+	background:  rgba(100,97,172,1);
 	color: #fff;
 	border: #6461ac;
 }
